@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import MyComponent from '../src/Component/TextInput.jsx'; 
 import styles from '../src/styles/GlobalStyles.js';
 
-const Registration = ({ users, setUsers, navigation }) => {
+const Registration = () => {
   
   
 

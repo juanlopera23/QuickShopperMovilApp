@@ -1,39 +1,53 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, Pressable } from 'react-native';
+import { View, Text, Alert, Pressable,KeyboardAvoidingView,Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MyComponent from '../src/Component/TextInput.jsx'; 
 import styles from '../src/styles/GlobalStyles.js';
+import iconLogin from '../src/images/iconLogin.png';
 
-const Login = ({ users }) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigation = useNavigation(); // Usar useNavigation para obtener la instancia de navegación
+    const navigation = useNavigation(); 
 
     const handleLogin = () => {
-        const user = users.find(user => user.email === email);
+       // const user = users.find(user => user.email === email);
 
-        if (user) {
-            navigation.navigate('Home'); // Navegar a la pantalla de inicio
-        } else {
-            Alert.alert(
-                'User Not Found',
-                'The user does not exist. Please check your email or register.',
-                [{ text: 'OK' }]
-            );
-        }
+        //if (user) {
+            navigation.navigate('Home');
+        //} else {
+            //Alert.alert(
+              //  'User Not Found',
+              //  'The user does not exist. Please check your email or register.',
+               // [{ text: 'OK' }]
+          //  );
+        //}
     };
 
     return (
-        <View>
-            <Text>LOGIN</Text>
-            <MyComponent label="Email" onChangeText={setEmail} />
+
+        
+        
+
+        <View 
+         style={styles.container}>
+            
+            
+            <View style={styles.logoContainer}>
+            <Image source={iconLogin} style={styles.Logo1} />
+            </View>
+            
+            <View style={styles.container2}>
+            <MyComponent label="Email" onChangeText={setEmail}  />
             <MyComponent label="Password" onChangeText={setPassword} secureTextEntry={true} />
+            
 
             <Pressable
-                onPress={handleLogin} // Llamar a handleLogin en lugar de navegar directamente
+            
+                onPress={navigation.navigate('App', { screen: 'Home' })}
                 style={({ pressed }) => [
                     {
-                        backgroundColor: pressed ? 'rgb(0, 0, 0)' : 'brown',
+                        backgroundColor: pressed ? '#26C6DA' : '#FFC107',
                     },
                     styles.button
                 ]}
@@ -44,12 +58,13 @@ const Login = ({ users }) => {
                     </Text>
                 )}
             </Pressable>
+            
 
             <Pressable
                 onPress={() => navigation.navigate('Registration')}
                 style={({ pressed }) => [
                     {
-                        backgroundColor: pressed ? 'rgb(199, 23, 23)' : 'brown',
+                        backgroundColor: pressed ? '#26C6DA' : '#FFC107',
                     },
                     styles.button
                 ]}
@@ -60,6 +75,8 @@ const Login = ({ users }) => {
                     </Text>
                 )}
             </Pressable>
+            </View>
+            
         </View>
     );
 };
