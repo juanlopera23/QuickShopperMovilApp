@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-native-paper';
 import styles from '../styles/GlobalStyles';
 
-const MyComponent = ({ label, onChangeText, keyboardType, secureTextEntry, ...props }) => {
+const MyComponent = ({ label, onChangeText, keyboardType, secureTextEntry }) => {
   return (
     <TextInput
       label={label}
@@ -10,7 +10,7 @@ const MyComponent = ({ label, onChangeText, keyboardType, secureTextEntry, ...pr
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry} 
       style={styles.label}
-      {...props} 
+      
     />
   );
 };

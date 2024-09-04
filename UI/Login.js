@@ -5,23 +5,17 @@ import MyComponent from '../src/Component/TextInput.jsx';
 import styles from '../src/styles/GlobalStyles.js';
 import iconLogin from '../src/images/iconLogin.png';
 
+
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation(); 
 
     const handleLogin = () => {
-       // const user = users.find(user => user.email === email);
-
-        //if (user) {
-            navigation.navigate('Home');
-        //} else {
-            //Alert.alert(
-              //  'User Not Found',
-              //  'The user does not exist. Please check your email or register.',
-               // [{ text: 'OK' }]
-          //  );
-        //}
+       
+        navigation.navigate('App');  
+       
     };
 
     return (
@@ -44,7 +38,7 @@ const Login = () => {
 
             <Pressable
             
-                onPress={navigation.navigate('App', { screen: 'Home' })}
+                onPress={handleLogin}
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed ? '#26C6DA' : '#FFC107',
