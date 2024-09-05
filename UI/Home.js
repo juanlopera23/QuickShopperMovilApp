@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Pressable,FlatList } from 'react-native';
+import { View, Image, Pressable,FlatList } from 'react-native';
 import styles from '../src/styles/GlobalStyles';
 import { Searchbar, Button, IconButton} from 'react-native-paper';
-import ProductCard from "./ProductCard"
+import ProductCard from "../src/Component/ProductCard"
 import HomeImg from "../src/images/HomeImg.png";
+import cart from "../src/images/cart.png"
 import supermoto from "../src/images/supermoto.jpg";
 import glucometer from "../src/images/glucometer.jpg";
 import camaro from "../src/images/camaro.jpg";
@@ -14,8 +15,7 @@ import avion from "../src/images/avion.jpg";
 import boat from "../src/images/boat.jpg";
 import punchingball from "../src/images/punchingball.jpg";
 import { useNavigation } from '@react-navigation/native';
-import Categories from './Categories';
-import Offers from './Offers';
+
 
 const product=[
 
@@ -85,10 +85,9 @@ const product=[
 
 ];
 
-
 const Home = () => {
     const [searchProduct, setSearchProduct] = React.useState('');
-    const [active, setActive] = React.useState('');
+    
     const navigation = useNavigation(); 
 
     const openDrawer = () => {
@@ -108,12 +107,12 @@ const Home = () => {
         navigation.navigate('Offers');  
 
     };
+    const handleShoppingCart=()=>
+    {
+        navigation.navigate('ShoppingCart')
+    }
 
-
-
-    
-    
-       
+   
     return (
         
         <View style={styles.home}>
@@ -125,13 +124,17 @@ const Home = () => {
                 </Pressable>
             
          
-            <Searchbar 
-                placeholder="Search Product"
-                onChangeText={setSearchProduct}
-                value={searchProduct}
-                icon="magnify"
-                style={styles.search}
-            />
+                <Searchbar 
+                    placeholder="Search Product"
+                    onChangeText={setSearchProduct}
+                    value={searchProduct}
+                    icon="magnify"
+                    style={styles.search}
+                />
+                <Pressable onPress={handleShoppingCart} style={styles.homeiconH}>
+                    <Image source={cart}  />
+                 </Pressable>
+
             </View>
             <View style={styles.homebuttons}>
                 <Button  mode="outlined" onPress={handleCategories} style={styles.buttonRoutes} textColor='black'>

@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
+import { PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -15,7 +16,7 @@ import Categories from './UI/Categories';
 import Offers from './UI/Offers';
 import ProductDetails from './UI/ProductDetails';
 import ShoppingCart from './UI/Shoppingcart';
-
+import PaymentBranch from './UI/PaymentBranch'
 
 
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator=()=>
 {
   return (
+    <PaperProvider>
     <Drawer.Navigator initialRouteName="Home"   >
       <Drawer.Screen name="User" component={User}  options={{ headerShown: false }}/>
       <Drawer.Screen name="Home" component={Home}  options={{ headerShown: false }} />
@@ -34,6 +36,7 @@ const DrawerNavigator=()=>
 
 
     </Drawer.Navigator>
+    </PaperProvider>
   );
 
 }
@@ -43,6 +46,7 @@ const App = () => {
   
 
   return (
+    <PaperProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
@@ -51,12 +55,14 @@ const App = () => {
         <Stack.Screen name="Offers" component={Offers}  options={{ headerShown: false }}/>
         <Stack.Screen name="ProductDetails" component={ProductDetails} options={{ headerShown: false }}/>
         <Stack.Screen name="App" component={DrawerNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
+        <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ headerShown: false }} />
+        <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ headerShown: false }} />
         
        
       </Stack.Navigator>
 
     </NavigationContainer>
+    </PaperProvider>
   );
 };
 

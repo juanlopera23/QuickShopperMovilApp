@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const Registration = () => {
+
+  const navigation=useNavigation();
  
   const handleLogin = () => {
   
@@ -29,12 +31,12 @@ const Registration = () => {
         </Text>
         </View>
 
-       <MyComponent label="Email" onChangeText={setEmail} />
-      <MyComponent label="First Name" onChangeText={setFirstName} />
-      <MyComponent label="Last Name" onChangeText={setLastName} />
-      <MyComponent label="Phone Number" onChangeText={setPhoneNumber}  keyboardType='numeric'/>
-      <MyComponent label="City" onChangeText={setCity} />
-      <MyComponent label="Password" onChangeText={setPassword} secureTextEntry={true} />
+       <MyComponent label="Email" editable={false} />
+      <MyComponent label="First Name" editable={false} />
+      <MyComponent label="Last Name" editable={false} />
+      <MyComponent label="Phone Number" editable={false}  keyboardType='numeric'/>
+      <MyComponent label="City" editable={false} />
+      <MyComponent label="Password" editable={false} secureTextEntry={true} />
 
       <Pressable
             
@@ -48,7 +50,7 @@ const Registration = () => {
         >
             {({ pressed }) => (
                 <Text style={styles.buttonText}>
-                    {pressed ? 'Pressed!' : 'Login'}
+                    {pressed ? 'Pressed!' : 'Go to Home'}
                 </Text>
             )}
         </Pressable>

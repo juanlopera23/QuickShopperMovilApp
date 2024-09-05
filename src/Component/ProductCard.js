@@ -1,8 +1,8 @@
 import React from "react";
 import {View, Text, Pressable, Image} from 'react-native';
-import styles from '../src/styles/GlobalStyles';
+import styles from '../styles/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
-import ProductDetails from './ProductDetails';
+
 
 
 const product =({product})=>

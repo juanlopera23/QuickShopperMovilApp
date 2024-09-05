@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, Pressable,KeyboardAvoidingView,Image } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import MyComponent from '../src/Component/TextInput.jsx'; 
 import styles from '../src/styles/GlobalStyles.js';
@@ -8,8 +9,7 @@ import iconLogin from '../src/images/iconLogin.png';
 
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    
     const navigation = useNavigation(); 
 
     const handleLogin = () => {
@@ -32,8 +32,8 @@ const Login = () => {
             </View>
             
             <View style={styles.container2}>
-            <MyComponent label="Email" onChangeText={setEmail}  />
-            <MyComponent label="Password" onChangeText={setPassword} secureTextEntry={true} />
+            <MyComponent label="Email" editable={false}  />
+            <MyComponent label="Password" editable={false} secureTextEntry={true} />
             
 
             <Pressable

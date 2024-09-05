@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { black } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
-import ProductDetails from "../../UI/ProductDetails";
+
 
 
 const styles=StyleSheet.create
@@ -45,7 +45,7 @@ const styles=StyleSheet.create
 
     search:
     {
-        width:300,
+        width:270,
         height:50
 
     },
@@ -65,10 +65,7 @@ const styles=StyleSheet.create
         elevation: 4, 
         margin:6
     },
-    stylesButton:
-    {
-
-    },
+    
     label:
     {
         flex:0,
@@ -230,7 +227,9 @@ const styles=StyleSheet.create
         borderRadius: 25, 
         alignItems: 'center', 
         elevation: 4, 
-        margin:10
+        margin:10,
+        marginTop:150
+
         
     },
     textShopping:
@@ -239,7 +238,24 @@ const styles=StyleSheet.create
         color:'black',
         marginLeft:50
         
+    },
+    buttonCart:
+    {
+        padding: 15,
+        borderRadius: 25, 
+        alignItems: 'center', 
+        elevation: 4, 
+        margin:10,
+        marginTop:530
+    },
+    textCart:
+    {
+        fontSize:20,
+        color:'black',
+        marginLeft:50,
+        margin:30
     }
+
     
 
 
