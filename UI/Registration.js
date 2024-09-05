@@ -34,7 +34,7 @@ const Registration = () => {
       <MyComponent label="Last Name" onChangeText={setLastName} />
       <MyComponent label="Phone Number" onChangeText={setPhoneNumber}  keyboardType='numeric'/>
       <MyComponent label="City" onChangeText={setCity} />
-      <MyComponent label="Password" onChangeText={setPassword} secureTextEntry={true} />
+      <MyComponent label="Password" onChangeText={setPassword} secureTextEntry={true} /
 
       <Pressable
             
