@@ -22,8 +22,8 @@ const product =({product})=>
         <View style={styles.card}>
             <Pressable onPress={handleProductDetails}>
             <Image source={product.photo} style={styles.photo} />
-            <Text>{product.name}</Text>
-            <Text>{product.price}</Text>
+            <Text style={styles.textProduct}>{product.name}</Text>
+            <Text style={styles.textProductPrice}>{product.price}</Text>
             </Pressable>
         
         </View>

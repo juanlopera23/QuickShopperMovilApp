@@ -1,16 +1,24 @@
+import { useContext } from 'react';
 import {View, Text, Pressable, Image, FlatList} from 'react-native';
-import styles from "../src/styles/GlobalStyles";
+import styles from "../styles/GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
-import HomeImg from "../src/images/HomeImg.png";
-import ShoppingCard from "../src/Component/ShoppingCard"
+import HomeImg from "../images/HomeImg.png";
+import ShoppingCard from "../Component/ShoppingCard";
+import { CartContext } from '../context/cartContext';
 
 
-const ShoppingCart=({route})=>
-{
-    const navigation=useNavigation();
-    const {product}=route.params || {};
+
+const ShoppingCart=()=>
+    {
+     
+    const { state, dispatch } = useContext(CartContext);
+   
     
-    const Shopping = product ? [product] : [];
+
+    
+    const navigation=useNavigation();
+    
+    
 
     const handleHome=()=>
     {
@@ -33,15 +41,15 @@ const ShoppingCart=({route})=>
                 </Pressable>
                 <Text style={styles.textShopping}>Shopping Cart</Text>
             </View>
-            <View>
+            <View >
                 {
-                Shopping.length===0 ?(
+                state.Cart.lentgh===0 ?(
                     <Text style={styles.textCart}>There are no products in your cart.</Text>
                  ) :(
 
                    <FlatList
 
-                       data={Shopping}
+                       data={state.Cart}
                        renderItem={({item})=> <ShoppingCard product={item}/>}
                        keyExtractor={(item)=> item.id.toString()}
  
@@ -50,7 +58,7 @@ const ShoppingCart=({route})=>
                 }
             
             </View>
-            <View>
+            <View style={styles.viewCart}>
             <Pressable
             
             onPress={handlePaymentbranch}

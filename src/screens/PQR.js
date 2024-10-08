@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View, Pressable,Image, Alert } from 'react-native';
-import styles from "../src/styles/GlobalStyles";
-import iconLogin from '../src/images/iconLogin.png';
-import MyComponent from '../src/Component/TextInput.jsx'; 
+import styles from "../styles/GlobalStyles";
+import iconLogin from '../images/iconLogin.png';
+import MyComponent from '../Component/TextInput.jsx'; 
 import { Button, Card, Tittle, TextInput} from "react-native-paper";
-import HomeImg from "../src/images/HomeImg.png";
+import HomeImg from "../images/HomeImg.png";
 import { useNavigation } from '@react-navigation/native';
 
 const PQR =()=>

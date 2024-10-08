@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import { View, Text, Alert, Pressable,KeyboardAvoidingView,Image } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import MyComponent from '../src/Component/TextInput.jsx'; 
-import styles from '../src/styles/GlobalStyles.js';
-import iconLogin from '../src/images/iconLogin.png';
+import MyComponent from '../Component/TextInput.jsx'; 
+import styles from '../styles/GlobalStyles.js';
+import iconLogin from '../images/iconLogin.png';
+import { reducer, initialStates } from '../context/userReducer';
 
 
 
 const Login = () => {
-    
+    const [state, dispatch] = useReducer(reducer, initialStates); 
+    const [email, setEmail] = useState(''); 
+    const [password, setPassword] = useState('');
     const navigation = useNavigation(); 
 
+
     const handleLogin = () => {
-       
-        navigation.navigate('App');  
-       
+    
+        dispatch({
+            type: 'LOGIN',
+            payload: {
+                email: email,
+                password: password,
+            }
+        });
     };
+
+    useEffect(() => {
+        if (state.isLoggedIn) {
+            navigation.navigate('Home'); 
+        }
+    }, [state.isLoggedIn]);
+    
+   
+
 
     return (
 
@@ -32,8 +50,19 @@ const Login = () => {
             </View>
             
             <View style={styles.container2}>
-            <MyComponent label="Email" editable={false}  />
-            <MyComponent label="Password" editable={false} secureTextEntry={true} />
+            <TextInput
+                    label="Email"
+                    value={email}
+                    onChangeText={setEmail} 
+                    style={styles.input}
+                />
+                <TextInput
+                    label="Password"
+                    value={password}
+                    onChangeText={setPassword} 
+                    secureTextEntry={true}
+                    style={styles.input}
+                />
             
 
             <Pressable

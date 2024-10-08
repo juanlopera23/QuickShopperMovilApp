@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Text, View, Pressable,Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from '../src/styles/GlobalStyles.js';
-import iconLogin from '../src/images/iconLogin.png';
+import styles from '../styles/GlobalStyles.js';
+import iconLogin from '../images/iconLogin.png';
 
 
 
@@ -12,7 +12,8 @@ const User = () => {
 
 
   const handleLogin = () => {
-  
+
+
     navigation.navigate('Login');  
 
 };

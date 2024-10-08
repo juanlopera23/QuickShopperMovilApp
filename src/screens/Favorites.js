@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, Pressable, Image} from "react-native";
-import styles from "../src/styles/GlobalStyles";
-import HomeImg from "../src/images/HomeImg.png"
+import styles from "../styles/GlobalStyles";
+import HomeImg from "../images/HomeImg.png"
 import { useNavigation } from '@react-navigation/native';
 
 

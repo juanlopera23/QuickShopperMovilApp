@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
-import { black } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
+
 
 
 
@@ -160,7 +159,7 @@ const styles=StyleSheet.create
     homebuttons:
     {
         flexDirection:'row',
-        justifyContent:'flex-end'
+        justifyContent:'center'
     },
    homeiconH :
     {
@@ -182,16 +181,50 @@ const styles=StyleSheet.create
         shadowOpacity:0.25,
         shadowRadius:3.84,
         elevation:5,
-        margin:5,
-        width:168,
+        margin:8,
+        width:180,
+        
         
        
         
     },
+    ShoppingCard:
+    {
+        backgroundColor: 'white',
+        borderRadius: 10,
+        shadowColor:'#000',
+        textShadowOffset:{width: 0, height:2},
+        shadowOpacity:0.25,
+        shadowRadius:3.84,
+        elevation:5,
+        margin:5,
+        width:380,
+        marginLeft: 15,
+        marginTop:10,
+        flexDirection:'row',
+
+    },
+    ShoppingCard2:
+    {
+        flex:1.5,
+        marginLeft: -25,
+
+    },
+    TextProductCart:
+    {
+        fontSize:19,
+        color:'black',
+        
+        margin:5,
+        
+
+    },
+    
     photo:
     {
         width: 160, 
         height: 110,
+        margin:9
         
     },
     photoDetails:
@@ -226,11 +259,18 @@ const styles=StyleSheet.create
         padding: 15,
         borderRadius: 25, 
         alignItems: 'center', 
+
         elevation: 4, 
         margin:10,
-        marginTop:150
+        
 
         
+    },
+    viewDetails:
+    {
+        flex:0.8,
+        justifyContent: 'flex-end',
+
     },
     textShopping:
     {
@@ -246,7 +286,7 @@ const styles=StyleSheet.create
         alignItems: 'center', 
         elevation: 4, 
         margin:10,
-        marginTop:530
+     
     },
     textCart:
     {
@@ -254,7 +294,49 @@ const styles=StyleSheet.create
         color:'black',
         marginLeft:50,
         margin:30
-    }
+    },
+    flatlist:
+    {
+       flex:1,
+        backgroundColor: '#ccd2d9',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    textProduct:
+    {
+        fontSize:15,
+        color:'black',
+        marginLeft:50,
+        
+
+    },
+    textProductPrice:
+    {
+        fontSize:15,
+        color:'green',
+        marginLeft:50,
+        margin:5
+        
+
+    },
+    textDetailsTitle:
+    {
+        fontSize:21,
+        color:'blue',
+        marginLeft:50,
+        margin:5,
+        marginTop:10
+
+    },
+    viewCart: {
+        flex:0.5,
+        justifyContent:"flex-end",
+
+    },
+
+
+    
 
     
 
