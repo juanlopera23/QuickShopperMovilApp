@@ -19,7 +19,7 @@ const reducer=(state,action)=>
     switch(action.type)
     {
         case "ADD":
-            //if(state.Cart.length === 0 ) return{...state,Cart:[...state.Cart,action.payload]};
+         
 
             if(state.Cart.some((item) => item.id === action.payload.id))
             {

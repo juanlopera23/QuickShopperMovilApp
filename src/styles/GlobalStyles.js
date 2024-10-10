@@ -330,9 +330,12 @@ const styles=StyleSheet.create
 
     },
     viewCart: {
-        flex:0.5,
-        justifyContent:"flex-end",
-
+        flex: 1,             
+        justifyContent: "flex-end", 
+        width: '100%',        
+        padding: 10,          
+        position: 'absolute',  
+        bottom: 0,            
     },
 
 

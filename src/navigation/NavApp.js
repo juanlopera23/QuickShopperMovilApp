@@ -17,6 +17,7 @@ import Offers from '../screens/Offers';
 import ProductDetails from '../screens/ProductDetails';
 import ShoppingCart from '../screens/Shoppingcart';
 import PaymentBranch from '../screens/PaymentBranch';
+import Category from '../screens/Category'
 
 import { CartProvider } from '../context/cartContext';
 
@@ -70,7 +71,7 @@ const navApp = () => {
         <Stack.Screen name="App" component={DrawerNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ headerShown: false }} />
         <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ headerShown: false }} />
-        
+        <Stack.Screen name="Category" component={Category} options={{ headerShown: false }} />
        
       </Stack.Navigator>
 

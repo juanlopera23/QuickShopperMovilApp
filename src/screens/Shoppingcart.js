@@ -59,22 +59,22 @@ const ShoppingCart=()=>
             
             </View>
             <View style={styles.viewCart}>
-            <Pressable
+                <Pressable
             
-            onPress={handlePaymentbranch}
-            style={({ pressed }) => [
-                {
-                    backgroundColor: pressed ? '#26C6DA' : '#FFC107',
-                },
-                styles.buttonCart
-            ]}
-        >
-            {({ pressed }) => (
-                <Text style={styles.buttonText}>
-                    {pressed ? 'Pressed!' : 'Payment Branch'}
-                </Text>
-            )}
-        </Pressable>
+                    onPress={handlePaymentbranch}
+                    style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed ? '#26C6DA' : '#FFC107',
+                    },
+                    styles.buttonCart
+                    ]}
+                >
+                    {({ pressed }) => (
+                        <Text style={styles.buttonText}>
+                            {pressed ? 'Pressed!' : 'Payment Branch'}
+                        </Text>
+                    )}
+                </Pressable>
             </View>
             
         </View>

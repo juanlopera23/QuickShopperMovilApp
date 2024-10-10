@@ -21,15 +21,15 @@ import punchingball from "../images/punchingball.jpg";
 
 
 const product = [
-    { id: 1, photo: nike, name: "Nike 8", price: 350000 },
-    { id: 2, photo: camaro, name: "Chevrolet Camaro", price: 180000000 },
-    { id: 3, photo: rog, name: "ROG RTX 4080", price: 8599900 },
-    { id: 4, photo: glucometer, name: 'Glucometer', price: 70000 },
-    { id: 5, photo: fan, name: 'Fan', price: 70000 },
-    { id: 6, photo: supermoto, name: 'Husqvarna 701', price: 55000000 },
-    { id: 7, photo: avion, name: 'Boeing-Stearman 75', price: 1200000000 },
-    { id: 8, photo: punchingball, name: "Punching Ball", price: 150000 },
-    { id: 9, photo: boat, name: "Boat", price: 250000000 },
+    { id: 1, photo: nike, name: "Nike 8", price: 350000, type:"clothes" },
+    { id: 2, photo: camaro, name: "Chevrolet Camaro", price: 180000000, type:"transports" },
+    { id: 3, photo: rog, name: "ROG RTX 4080", price: 8599900, type:"thecnology" },
+    { id: 4, photo: glucometer, name: 'Glucometer', price: 70000, type: 'health'  },
+    { id: 5, photo: fan, name: 'Fan', price: 70000, type: 'health'  },
+    { id: 6, photo: supermoto, name: 'Husqvarna 701', price: 55000000, type:"transports" },
+    { id: 7, photo: avion, name: 'Boeing-Stearman 75', price: 1200000000,type:"transports" },
+    { id: 8, photo: punchingball, name: "Punching Ball", price: 150000, type:'health'  },
+    { id: 9, photo: boat, name: "Boat", price: 250000000, type:"transports" },
 ];
 
 

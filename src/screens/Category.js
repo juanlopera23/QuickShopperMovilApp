@@ -15,7 +15,6 @@ import nike from "../images/nike.jpg";
 import avion from "../images/avion.jpg";
 import boat from "../images/boat.jpg";
 import punchingball from "../images/punchingball.jpg";
-import CategoryCard from "../Component/CategoryCard";
 
 const product = [
     { id: 1, photo: nike, name: "Nike 8", price: 350000, type:"clothes" },
@@ -29,17 +28,22 @@ const product = [
     { id: 9, photo: boat, name: "Boat", price: 250000000, type:"transports" },
 ];
 
-const cat=[
-    { id: 1, photo: camaro, name: "transports" },
-    { id: 2, photo: rog, name: "thecnology" },
-    { id: 3, photo: nike, name: "clothes" },
-    { id: 4, photo: glucometer, name: 'health' },
-]
 
-const Categories=()=>
+const Categories=({route})=>
 {
-    const{stae,dispatch}=useContext(CartContext);
-    const [filteredProducts, setFilteredProducts] = useState(product);
+        
+    const{cat}=route.params
+    const[filteredCategory,setFilteredCategory]=useState([])
+
+    useEffect(()=>
+    {
+        const filtered= product.filter((product)=>product.type===cat.name)
+        setFilteredCategory(filtered)
+
+
+
+    },[cat])
+
     
     const numColumns=2
     const navigation = useNavigation(); 
@@ -63,7 +67,7 @@ const Categories=()=>
                 <Pressable onPress={handleHome}>
                     <Image source={HomeImg}  style={styles.homeiconC}/>
                 </Pressable>
-                <Text style={styles.text} >Categories</Text>
+                <Text style={styles.text} >{cat.name}</Text>
             </View>
             <View>
 
@@ -71,8 +75,8 @@ const Categories=()=>
            
                
             <FlatList
-                data={cat} 
-                renderItem={({ item }) => <CategoryCard cat={item} />}
+                data={filteredCategory} 
+                renderItem={({ item }) => <ProductCard product={item} />}
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={numColumns}
                 
