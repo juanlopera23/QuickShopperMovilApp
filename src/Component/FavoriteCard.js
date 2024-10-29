@@ -4,23 +4,29 @@ import styles from '../styles/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
 import { FavoriteContext } from "../context/favoriteContext";
 import { CartContext } from "../context/cartContext";
-import star from '../images/star.png';
+
 import cart from '../images/cart.png';
 
 
 const product =({product})=>
 {
-    const {  dispatch } = useContext(FavoriteContext);
-    const {  dispatch:cartDispatch } = useContext(CartContext);
+   
+    const {  dispatch } = useContext(CartContext);
+    const {  dispatch:favoriteDispatch } = useContext(FavoriteContext);
     const navigation = useNavigation(); 
 
-    
+ 
 
-    const addFavorite = () => {
-        dispatch({type:"ADD" ,payload:product})
-    };
+    
     const addCart = () => {
-        cartDispatch({type:"ADD", payload:product})
+        dispatch({type:"ADD", payload:product})
+    }
+
+    const handleDelete = () => {
+ 
+        favoriteDispatch({ type: "DELETE", payload: { key: product.key } }) 
+              
+        
     }
     
 
@@ -44,14 +50,17 @@ const product =({product})=>
                 <Text style={styles.textProduct}>{product.name}</Text>
                 <Text style={textProductPriceStyle}>{product.price}</Text>
                 <View style={styles.viewProduct}>
-                    <Pressable onPress={addFavorite}>
-                        <Image source={star}  style={styles.homeiconH}
-                        />
-                    </Pressable >
+                    
+                   
                     <Pressable onPress={addCart}>
                         <Image source={cart}  style={styles.homeiconH}
                         />
 
+                    </Pressable>
+                </View>
+                <View>
+                    <Pressable onPress={handleDelete} style={styles.homeiconH}>
+                        <Text style={styles.deleteFavorite}> DELETE</Text>
                     </Pressable>
                 </View>
             </Pressable>

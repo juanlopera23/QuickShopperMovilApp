@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,7 +18,7 @@ import ProductDetails from '../screens/ProductDetails';
 import ShoppingCart from '../screens/Shoppingcart';
 import PaymentBranch from '../screens/PaymentBranch';
 import Category from '../screens/Category'
-
+import { FavoriteProvider } from '../context/favoriteContext';
 import { CartProvider } from '../context/cartContext';
 
 
@@ -57,26 +57,28 @@ const navApp = () => {
   return (
 
    
-      <PaperProvider> 
+    <PaperProvider> 
 
     
       <CartProvider>
-      <NavigationContainer>
-      <Stack.Navigator initialRouteName="App">
-        <Stack.Screen name="Login" component={Login} /*options={{ headerShown: false }} *//>
-        <Stack.Screen name="Registration" component={Registration} /*options={{ headerShown: false }} *//>
-        <Stack.Screen name="Categories" component={Categories}  options={{ headerShown: false }}/>
-        <Stack.Screen name="Offers" component={Offers}  options={{ headerShown: false }}/>
-        <Stack.Screen name="ProductDetails" component={ProductDetails} options={{ headerShown: false }}/>
-        <Stack.Screen name="App" component={DrawerNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ headerShown: false }} />
-        <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ headerShown: false }} />
-        <Stack.Screen name="Category" component={Category} options={{ headerShown: false }} />
+        <FavoriteProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="App">
+              <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name="Registration" component={Registration} options={{ headerShown: false }}/>
+              <Stack.Screen name="Categories" component={Categories}  options={{ headerShown: false }}/>
+              <Stack.Screen name="Offers" component={Offers}  options={{ headerShown: false }}/>
+              <Stack.Screen name="ProductDetails" component={ProductDetails} options={{ headerShown: false }}/>
+              <Stack.Screen name="App" component={DrawerNavigator} options={{ headerShown: false }} />
+              <Stack.Screen name="ShoppingCart" component={ShoppingCart} options={{ headerShown: false }} />
+              <Stack.Screen name="PaymentBranch" component={PaymentBranch} options={{ headerShown: false }} />
+              <Stack.Screen name="Category" component={Category} options={{ headerShown: false }} />
        
-      </Stack.Navigator>
+            </Stack.Navigator>
 
-    </NavigationContainer>
-    </CartProvider>
+          </NavigationContainer>
+        </FavoriteProvider>
+      </CartProvider>
  
     </PaperProvider>  
    

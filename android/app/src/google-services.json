@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1063263246089",
+    "firebase_url": "https://databasequickshopper-default-rtdb.firebaseio.com",
+    "project_id": "databasequickshopper",
+    "storage_bucket": "databasequickshopper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063263246089:android:5d7b8a59350ba2baf525d8",
+        "android_client_info": {
+          "package_name": "com.quickshopper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Y-KZiwIz5y7KcK_FJUcBOyWHplYpk8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

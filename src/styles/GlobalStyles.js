@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 
 
 
+
 const styles=StyleSheet.create
 ({
 
@@ -337,6 +338,35 @@ const styles=StyleSheet.create
         position: 'absolute',  
         bottom: 0,            
     },
+    buttonHome:
+    {
+        padding: 15,
+        color:'black', 
+        alignItems: 'center', 
+        marginLeft:127,
+        margin:5,
+        fontSize:15
+    },
+    viewProduct:
+    {
+        flexDirection:'row',
+        justifyContent:'center',
+        
+    },
+    deleteButton:
+    {
+        fontSize:16,
+        color:'blue',
+        
+    },
+    deleteFavorite:
+    {
+        fontSize:16,
+        color:'blue',
+        marginLeft:40,
+        marginTop:2
+    }
+    
 
 
     

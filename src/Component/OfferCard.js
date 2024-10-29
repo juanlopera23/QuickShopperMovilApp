@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, {useContext}from "react";
 import {View, Text, Pressable, Image,StyleSheet} from 'react-native';
 import styles from '../styles/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
@@ -8,13 +8,14 @@ import star from '../images/star.png';
 import cart from '../images/cart.png';
 
 
-const product =({product})=>
-{
-    const {  dispatch } = useContext(FavoriteContext);
-    const {  dispatch:cartDispatch } = useContext(CartContext);
-    const navigation = useNavigation(); 
 
+const OfferProduct =({product})=>
+{
+    const { dispatch } = useContext(FavoriteContext);
+    const { dispatch:cartDispatch } = useContext(CartContext);
+    const navigation = useNavigation(); 
     
+   
 
     const addFavorite = () => {
         dispatch({type:"ADD" ,payload:product})
@@ -32,18 +33,17 @@ const product =({product})=>
 
     };
 
-    const cardStyle = product.offer ? localStyles.offerCard : styles.card;
-    const textProductPriceStyle = product.offer ? localStyles.offerTextProductPrice : styles.textProductPrice;
-
+   
     return(
         <View 
         
-        style={cardStyle}>
+        style={styles.card}>
             <Pressable onPress={handleProductDetails}>
-                <Image source={{ uri: product.imgURL }} style={styles.photo} />
-                <Text style={styles.textProduct}>{product.name}</Text>
-                <Text style={textProductPriceStyle}>{product.price}</Text>
-                <View style={styles.viewProduct}>
+            <Image source={{ uri: product.imgURL }} style={styles.photo} />
+            <Text style={styles.textProduct}>{product.name}</Text>
+            <Text style={styles.textProductPrice}>{product.price}</Text>
+            </Pressable>
+            <View style={styles.viewProduct}>
                     <Pressable onPress={addFavorite}>
                         <Image source={star}  style={styles.homeiconH}
                         />
@@ -54,24 +54,8 @@ const product =({product})=>
 
                     </Pressable>
                 </View>
-            </Pressable>
         
         </View>
     );
 };
-
-const localStyles = StyleSheet.create({
-    offerCard: {
-        ...styles.card,
-        backgroundColor: "yellow",
-    },
-    offerTextProduct: {
-        ...styles.textProduct,
-        color: "black",
-    },
-    offerTextProductPrice: {
-        ...styles.textProductPrice,
-        color: "red",
-    },
-})
-export default product;
+export default OfferProduct;

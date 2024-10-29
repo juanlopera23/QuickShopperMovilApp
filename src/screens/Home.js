@@ -8,72 +8,72 @@ import lupa from "../images/lupa.png";
 import cart from "../images/cart.png";
 import borrar from "../images/borrar.png"
 import { useNavigation } from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
-import supermoto from "../images/supermoto.jpg";
-import glucometer from "../images/glucometer.jpg";
-import camaro from "../images/camaro.jpg";
-import rog from "../images/rog.jpg";
-import fan from "../images/fan.jpg";
-import nike from "../images/nike.jpg";
-import avion from "../images/avion.jpg";
-import boat from "../images/boat.jpg";
-import punchingball from "../images/punchingball.jpg";
-
-
-const product = [
-    { id: 1, photo: nike, name: "Nike 8", price: 350000, type:"clothes" },
-    { id: 2, photo: camaro, name: "Chevrolet Camaro", price: 180000000, type:"transports" },
-    { id: 3, photo: rog, name: "ROG RTX 4080", price: 8599900, type:"thecnology" },
-    { id: 4, photo: glucometer, name: 'Glucometer', price: 70000, type: 'health'  },
-    { id: 5, photo: fan, name: 'Fan', price: 70000, type: 'health'  },
-    { id: 6, photo: supermoto, name: 'Husqvarna 701', price: 55000000, type:"transports" },
-    { id: 7, photo: avion, name: 'Boeing-Stearman 75', price: 1200000000,type:"transports" },
-    { id: 8, photo: punchingball, name: "Punching Ball", price: 150000, type:'health'  },
-    { id: 9, photo: boat, name: "Boat", price: 250000000, type:"transports" },
-];
 
 
 const Home = () => {
+    const[data, setData] = useState([]);
     const [searchProduct, setSearchProduct] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState(product);
+    const [filteredProducts, setFilteredProducts] = useState(data);
     const numColumns = 2;
 
-    useEffect(()=>
-    {
-        if(searchProduct === '')setFilteredProducts(product);
 
-    },
+    useEffect(() => {
+        
+        const dataBase = firestore().collection('Products') .onSnapshot(querySnapshot => {
+            const documents = [];
+    
+            console.log('Datos de Firestore recibidos')
 
-    [searchProduct]
+            querySnapshot.forEach(documentSnapshot => {
+              documents.push({
+                ...documentSnapshot.data(),key: documentSnapshot.id, 
+              });
+            });
+            console.log('Número de documentos:', querySnapshot.size)
+    
+            console.log(documents)
+            setData(documents)
+            setFilteredProducts(documents)
+          });
+    
 
-    );
+        return () => dataBase();
+      }, []);
+
+      useEffect(() => {
+        if (searchProduct === '') {
+            setFilteredProducts(data); 
+        } 
+    }, [searchProduct, data]);
 
     const handleSearch = () => {
-        const filtered = product.filter(item =>
+        const filtered = data.filter(item =>
             item.name.toLowerCase().includes(searchProduct.toLowerCase())
-        );
-        setFilteredProducts(filtered); 
-        console.log('Products filtered'); 
+        )
+        setFilteredProducts(filtered)
+        console.log('Products filtered')
        
     };
     
     const navigation = useNavigation(); 
 
     const openDrawer = () => {
-        navigation.openDrawer(); 
+        navigation.openDrawer() 
       };
 
 
     const handleCategories = () => 
         {
   
-        navigation.navigate('Categories');  
+        navigation.navigate('Categories')  
 
     };
     const handleOffers = () => 
         {
   
-        navigation.navigate('Offers');  
+        navigation.navigate('Offers')  
 
     };
     const handleShoppingCart=()=>
@@ -123,7 +123,7 @@ const Home = () => {
             <FlatList
                 data={filteredProducts} 
                 renderItem={({ item }) => <ProductCard product={item} />}
-                keyExtractor={(item) => item.id.toString()}
+                keyExtractor={(item) => item.key}
                 numColumns={numColumns}
                 
             />

@@ -5,35 +5,48 @@ import { useNavigation } from '@react-navigation/native';
 import MyComponent from '../Component/TextInput.jsx'; 
 import styles from '../styles/GlobalStyles.js';
 import iconLogin from '../images/iconLogin.png';
-import { reducer, initialStates } from '../context/userReducer';
+import auth from '@react-native-firebase/auth'; 
 
 
 
 const Login = () => {
-    const [state, dispatch] = useReducer(reducer, initialStates); 
-    const [email, setEmail] = useState(''); 
-    const [password, setPassword] = useState('');
-    const navigation = useNavigation(); 
 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-    const handleLogin = () => {
-    
-        dispatch({
-            type: 'LOGIN',
-            payload: {
-                email: email,
-                password: password,
-            }
-        });
-    };
+  const navigation = useNavigation();
 
-    useEffect(() => {
-        if (state.isLoggedIn) {
-            navigation.navigate('Home'); 
-        }
-    }, [state.isLoggedIn]);
-    
-   
+  const showAlert = (message) => {
+    Alert.alert("QUICKSHOPPER", message)
+  };
+
+  const loginUser = async () => {
+    if (!email || !password) {
+      showAlert("Please fill in both email and password.")
+      return;
+    }
+
+    try {
+      await auth().signInWithEmailAndPassword(email, password)
+
+      console.log('User logged in successfully.')
+
+      navigation.navigate('Home')
+    } catch (error) {
+     
+      if (error.code === 'auth/user-not-found') showAlert("No user found with this email.")
+
+       else if (error.code === 'auth/wrong-password') showAlert("Incorrect password. Please try again.")
+
+       else {
+        showAlert("Login failed. Please try again.")
+      }
+    }
+  };
+    const handleHome=()=>
+    {
+        navigation.navigate('Home')
+    }
 
 
     return (
@@ -45,8 +58,8 @@ const Login = () => {
          style={styles.container}>
             
             
-            <View style={styles.logoContainer}>
-            <Image source={iconLogin} style={styles.Logo1} />
+            <View >
+                <Image source={iconLogin} style={styles.Logo1} />
             </View>
             
             <View style={styles.container2}>
@@ -67,7 +80,7 @@ const Login = () => {
 
             <Pressable
             
-                onPress={handleLogin}
+                onPress={loginUser}
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed ? '#26C6DA' : '#FFC107',
@@ -99,6 +112,13 @@ const Login = () => {
                 )}
             </Pressable>
             </View>
+            <Pressable onPress={handleHome}>
+                <Text style={styles.buttonHome}>
+                    continue as a guest
+                </Text>
+
+            </Pressable>
+            
             
         </View>
     );

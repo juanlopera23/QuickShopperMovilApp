@@ -4,30 +4,16 @@ import styles from "../styles/GlobalStyles";
 import HomeImg from "../images/HomeImg.png";
 import { useNavigation } from '@react-navigation/native';
 import { CartContext } from "../context/cartContext";
-import ProductCard from "../Component/ProductCard"
+import CategoryCard from "../Component/CategoryCard";
 
-import supermoto from "../images/supermoto.jpg";
 import glucometer from "../images/glucometer.jpg";
 import camaro from "../images/camaro.jpg";
 import rog from "../images/rog.jpg";
-import fan from "../images/fan.jpg";
 import nike from "../images/nike.jpg";
-import avion from "../images/avion.jpg";
-import boat from "../images/boat.jpg";
-import punchingball from "../images/punchingball.jpg";
-import CategoryCard from "../Component/CategoryCard";
 
-const product = [
-    { id: 1, photo: nike, name: "Nike 8", price: 350000, type:"clothes" },
-    { id: 2, photo: camaro, name: "Chevrolet Camaro", price: 180000000, type:"transports" },
-    { id: 3, photo: rog, name: "ROG RTX 4080", price: 8599900, type:"thecnology" },
-    { id: 4, photo: glucometer, name: 'Glucometer', price: 70000, type: 'health'  },
-    { id: 5, photo: fan, name: 'Fan', price: 70000, type: 'health'  },
-    { id: 6, photo: supermoto, name: 'Husqvarna 701', price: 55000000, type:"transports" },
-    { id: 7, photo: avion, name: 'Boeing-Stearman 75', price: 1200000000,type:"transports" },
-    { id: 8, photo: punchingball, name: "Punching Ball", price: 150000, type:'health'  },
-    { id: 9, photo: boat, name: "Boat", price: 250000000, type:"transports" },
-];
+
+
+
 
 const cat=[
     { id: 1, photo: camaro, name: "transports" },
@@ -38,8 +24,8 @@ const cat=[
 
 const Categories=()=>
 {
-    const{stae,dispatch}=useContext(CartContext);
-    const [filteredProducts, setFilteredProducts] = useState(product);
+  
+  
     
     const numColumns=2
     const navigation = useNavigation(); 

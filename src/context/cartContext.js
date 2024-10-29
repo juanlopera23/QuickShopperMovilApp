@@ -14,6 +14,15 @@ const showAlert = () => {
     )
 }
 
+const showAlert2=()=>{
+
+    Alert.alert(
+      "QuickShopper", 
+      "add to cart.", 
+    )
+
+}
+
 const reducer=(state,action)=>
 {
     switch(action.type)
@@ -21,7 +30,7 @@ const reducer=(state,action)=>
         case "ADD":
          
 
-            if(state.Cart.some((item) => item.id === action.payload.id))
+            if(state.Cart.some((item) => item.key === action.payload.key))
             {
                 showAlert();
                 
@@ -30,29 +39,26 @@ const reducer=(state,action)=>
 
             }
             else{
+
+                showAlert2();
                 
                 return{...state,Cart:[...state.Cart,action.payload]};
             }
         case "DELETE":
-            return{
-                ...state,
-                Cart: state.Cart.filter(Cart=> Cart.id !== action.payload.id)
-            }
-        case "INCREASE":
             return {
                 ...state,
-                cart: state.cart.map((item) =>
-                  item.id === action.payload.id
-                    ? { ...item, cantidad: item.cantidad + 1 }
+                Cart: state.Cart.filter((item) => item.key !== action.payload.key),
+            };
+        case "INCREASE":
+            return {
+                ...state,cart: state.cart.map((item) =>item.id === action.payload.id? { ...item, cantidad: item.cantidad + 1 }
                     : item
                 ),
               };
         case "DECREASE":
             return {
-                ...state,
-                cart: state.cart.map((item) =>
-                  item.id === action.payload.id && item.cantidad > 0
-                    ? { ...item, cantidad: item.cantidad - 1 }
+                ...state,cart: state.cart.map((item) =>item.id === action.payload.id && item.cantidad > 0
+                ? { ...item, cantidad: item.cantidad - 1 }
                     : item
                 ),
               };

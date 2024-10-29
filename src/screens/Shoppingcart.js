@@ -51,7 +51,7 @@ const ShoppingCart=()=>
 
                        data={state.Cart}
                        renderItem={({item})=> <ShoppingCard product={item}/>}
-                       keyExtractor={(item)=> item.id.toString()}
+                       keyExtractor={(item)=> item.key}
  
                     />
                     )
