@@ -82,7 +82,7 @@ const navApp = () => {
  
     </PaperProvider>  
    
-  );
+  )
 };
 
 export default navApp;
